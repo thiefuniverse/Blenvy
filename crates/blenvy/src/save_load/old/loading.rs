@@ -73,10 +73,7 @@ pub(crate) fn load_game(
     // let input = std::fs::read(&path)?;
     let dynamic_data = commands
         .spawn((
-            DynamicSceneBundle {
-                scene: asset_server.load(save_path),
-                ..default()
-            },
+            DynamicSceneRoot(asset_server.load(save_path)),
             bevy::prelude::Name::from("dynamic"),
             DynamicEntitiesRoot,
         ))

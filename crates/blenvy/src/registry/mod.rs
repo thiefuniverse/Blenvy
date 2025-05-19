@@ -6,7 +6,7 @@ pub use export_types::*;
 use bevy::{
     app::Startup,
     asset::AssetPlugin,
-    prelude::{App, IntoSystemConfigs, Plugin, Res, Resource},
+    prelude::{App, IntoScheduleConfigs, Plugin, Res, Resource},
     scene::SceneFilter,
 };
 

@@ -1,6 +1,6 @@
 #![doc = include_str!("../../../README.md")]
 
-use bevy::{render::primitives::Aabb, utils::HashMap};
+use bevy::{platform::collections::HashMap, render::primitives::Aabb};
 use std::path::PathBuf;
 
 pub mod components;
@@ -26,7 +26,7 @@ pub struct BlenvyConfig {
 
     // blueprints
     pub(crate) aabb_cache: HashMap<String, Aabb>, // cache for aabbs
-    pub(crate) materials_cache: HashMap<String, Handle<StandardMaterial>>, // cache for materials
+    pub(crate) materials_cache: HashMap<String, MeshMaterial3d<StandardMaterial>>, // cache for materials
 
     // save & load
     pub(crate) save_component_filter: SceneFilter,

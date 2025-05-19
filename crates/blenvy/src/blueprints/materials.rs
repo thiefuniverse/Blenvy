@@ -31,9 +31,9 @@ pub(crate) fn inject_materials(
     with_materials_and_meshes: Query<
         (),
         (
-            With<Parent>,
-            With<Handle<StandardMaterial>>,
-            With<Handle<Mesh>>,
+            With<ChildOf>,
+            With<MeshMaterial3d<StandardMaterial>>,
+            With<Mesh3d>,
         ),
     >,
     assets_gltf: Res<Assets<Gltf>>,
@@ -78,9 +78,10 @@ pub(crate) fn inject_materials(
                         .named_materials
                         .get(&material_info.name as &str)
                         .expect("this material should have been loaded at this stage, please make sure you are correctly preloading them");
-                    blenvy_config
-                        .materials_cache
-                        .insert(material_full_path, material.clone());
+                    //TODO: fix it
+                    // blenvy_config
+                    //     .materials_cache
+                    //     .insert(material_full_path, material.clone());
                     material_found = Some(material);
                 }
             }
@@ -88,14 +89,15 @@ pub(crate) fn inject_materials(
             if let Some(material) = material_found {
                 info!("Step 6: injecting/replacing materials");
                 for (child_index, child) in children.iter().enumerate() {
-                    if child_index == material_index && with_materials_and_meshes.contains(*child) {
+                    if child_index == material_index && with_materials_and_meshes.contains(child) {
                         info!(
                             "injecting material {}, path: {:?}",
                             material_info.name,
                             material_info.path.clone()
                         );
 
-                        commands.entity(*child).insert(material.clone());
+                        //TODO:fix it
+                        // commands.entity(child).insert(material.clone());
                     }
                 }
             }

@@ -11,7 +11,7 @@ pub mod blender_settings;
 
 use bevy::{
     ecs::{component::Component, reflect::ReflectComponent},
-    prelude::{App, IntoSystemConfigs, Plugin, SystemSet, Update},
+    prelude::{App, IntoScheduleConfigs, Plugin, SystemSet, Update},
     reflect::Reflect,
 };
 
